@@ -55,22 +55,3 @@ static inline BOOL objfw_class_add_method(
 ) {
     return class_addMethod(cls, name, imp, types);
 }
-
-id ofobject_create_and_init() {
-    Class cls = objc_getClass("OFObject");
-    if (!cls) {
-        [OFStdErr writeLine: @"OFObject class not found"];
-        return nil;
-    }
-
-    id obj = class_createInstance(cls, 0);
-    SEL initSel = sel_registerName("init");
-    obj = objc_msg_send(obj, initSel);
-
-    return obj;
-}
-
-id ofobject_description(id obj) {
-    SEL descSel = sel_registerName("description");
-    return objc_msg_send(obj, descSel);
-}
