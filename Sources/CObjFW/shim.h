@@ -15,7 +15,13 @@ static inline objfw_class _Nullable objfw_get_class(const char *name) {
 }
 
 static inline objfw_class _Nullable objfw_get_meta_class(const char *name) {
+#ifdef __APPLE__
     return objc_getMetaClass(name);
+#else
+    Class cls = objc_getClass(name);
+    Class metaCls = object_getClass(cls);
+    return metaCls;
+#endif
 }
 
 static inline objfw_class objfw_allocate_class_pair(objfw_class superclass, const char *name, size_t extraBytes) {
