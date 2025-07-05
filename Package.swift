@@ -21,12 +21,15 @@ let package = Package(
             pkgConfig: "objfw",
             providers: [
                 .brew(["objfw"]),
-                .apt(["objfw-dev"])
+                .apt(["libobjfw1-dev"])
             ]
         ),
         .testTarget(
             name: "ObjFWTests",
-            dependencies: ["ObjFW"]
+            dependencies: ["ObjFW"],
+            linkerSettings: [
+                .linkedLibrary("objfwrt", .when(platforms: [.linux, .android, .windows, .openbsd]))
+            ]
         )
     ]
 )
