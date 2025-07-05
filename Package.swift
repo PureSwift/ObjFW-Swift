@@ -28,7 +28,8 @@ let package = Package(
             name: "ObjFWTests",
             dependencies: ["ObjFW"],
             linkerSettings: [
-                .linkedLibrary("objfwrt", .when(platforms: [.linux, .android, .windows, .openbsd]))
+                .linkedLibrary("objfw", .when(platforms: [.linux])),
+                .linkedLibrary("objfwrt", .when(platforms: [.linux]))
             ]
         )
     ]
