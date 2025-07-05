@@ -1,5 +1,4 @@
 module CObjFW [system] {
     header "shim.h"
-    link "objfw"
     export *
 }

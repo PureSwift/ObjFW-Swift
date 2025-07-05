@@ -1,7 +1,7 @@
 #ifdef __APPLE__
 #include "/opt/homebrew/include/ObjFW/ObjFW.h"
 #else
-#include <ObjFW/ObjFW.h>
+#include "ObjFWRT.h"
 #endif
 
 // Types
